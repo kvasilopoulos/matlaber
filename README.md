@@ -16,6 +16,17 @@ has to be install locally in order for {matlaber} to work.
 devtools::install_github("matlaber")
 ```
 
+``` r
+library(matlaber)
+run_matlab("A = 1")
+#> A = 1
+
+# Or in an unquoted environment
+run_matlab(code_env({A = 1; B = 2}))
+#> A = 1
+#> B = 2
+```
+
 -----
 
 Please note that the ‘matlaber’ project is released with a [Contributor

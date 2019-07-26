@@ -1,4 +1,5 @@
 #' @importFrom processx run
+#' @export
 run_matlab <- function(code, save_path = NULL, load_path = NULL,
                        run_arg = c("batch", "interactive"), ...){
 
@@ -27,6 +28,7 @@ run_matlab <- function(code, save_path = NULL, load_path = NULL,
 #   # TODO basically run, save and read
 # }
 
+#' @export
 print.matlaber <- function(x, pretty = FALSE) {
   no_ws <- gsub(" ", "", x$stdout)
   new_var <- gsub("\r\n\r\n\r\n","\n", no_ws)
@@ -35,6 +37,7 @@ print.matlaber <- function(x, pretty = FALSE) {
   cat(out)
 }
 
+#' @export
 code_env <- function(x) {
   # TODO pass R objects with expression~eval rmat rvec rmat
   code <- substitute(x)

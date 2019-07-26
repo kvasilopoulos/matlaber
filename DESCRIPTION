@@ -16,3 +16,5 @@ Imports:
     processx,
     R.matlab
 RoxygenNote: 6.1.1
+URL: https://github.com/kvasilopoulos/matlaber
+BugReports: https://github.com/kvasilopoulos/matlaber/issues
