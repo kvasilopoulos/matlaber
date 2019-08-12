@@ -5,16 +5,19 @@ Authors@R:
     person(given = "Kostas",
            family = "Vasilopoulos",
            role = c("aut", "cre"),
-           email = "k.vasilopoulos@gmail.com")
-Description: Provides 
+           email = "k.vasilopoulo@gmail.com")
+Description: Provides an interface to matlab systems locally. Embeded is an R to Matlab translator
+    to allow 
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Depends:
     R (>= 3.1)
 Imports: 
-    processx,
-    R.matlab
+    processx (>= 3.4.1),
+    R.matlab (>= 3.6.2)
 RoxygenNote: 6.1.1
 URL: https://github.com/kvasilopoulos/matlaber
 BugReports: https://github.com/kvasilopoulos/matlaber/issues
+Suggests: 
+    testthat (>= 2.1.0)

@@ -10,14 +10,14 @@
 The goal of matlaber is to provide an interface to Matlab from R. Matlab
 has to be install locally in order for {matlaber} to work.
 
-## Installation
-
-``` r
-devtools::install_github("matlaber")
-```
+## Usage
 
 ``` r
 library(matlaber)
+
+run_matlab("matlabroot")
+#> ans = 'C:\ProgramFiles\MATLAB\R2018b'
+
 run_matlab("A = 1")
 #> A = 1
 
@@ -25,6 +25,17 @@ run_matlab("A = 1")
 run_matlab(code_env({A = 1; B = 2}))
 #> A = 1
 #> B = 2
+```
+
+## Feedback Needed
+
+What do you need an interface to matlab for ? Feel free to get in
+touch\!
+
+## Installation
+
+``` r
+devtools::install_github("matlaber")
 ```
 
 -----
