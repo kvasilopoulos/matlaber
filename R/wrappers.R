@@ -1,41 +1,57 @@
 
-#'@export
-mat_write <- function(x) {
-}
-
-
-partial_message <- function(msg) {
-  type1 <- "MAT file format error"
-  type2 <- "Detected non-named objects"
-  type3 <- "Detected objects with duplicated names"
-  recode_error_message(
-    msg,
-    search = c(type1, type2, type3),
-    replace = c("mpla1", "mpla2", "mpla3"),
-    default = NULL
-  )
-}
-
-partial_message("mpla mpla")
-
-
-recode_error_message <- function(x, search, replace, default = NULL) {
-
-  # build a nested ifelse function by recursion
-  decode_fun <- function(search, replace, default = NULL) {
-    if (length(search) == 0L) {
-      function(x) if (is.null(default)) x else rep(default, length(x))
-    } else {
-      function(x) {
-        ifelse(x == search[1L], replace[1L],
-               decode_fun(tail(search,  -1L), tail(replace, -1L), default)(x))
-      }
-    }
+assert_mat <- function(x) {
+  is_valid_suffix <- endsWith(x, ".mat")
+  if (!is_valid_suffix) {
+    stop("This is not a valid filename, should end with '.mat'.", call. = FALSE)
   }
 }
 
+recode_msg <- function(msg, search, replace, default = msg) {
+  idx <- vector(length = length(search))
+  for (i in 1:length(search)) {
+    idx[i] <- grepl(search[i], msg)
+  }
+  if (!any(idx)) {
+    return(default)
+  }
+  replace[idx]
+}
+
+recode_msg_write <- function(x) {
+  recode_msg(
+    x,
+    search = c("non-named", "duplicated"),
+    replace = c("Non-named variable names.", "Duplicate variable names.")
+  )
+}
+
+#' Reads a MAT file
+#'
+#'  This function is a soft-wrapper around \code{\link[R.matlab]{readMat}}.
+#'
+#' @importFrom R.matlab writeMat
+#' @param matfile a MAT file
+#' @param ... further arguments passe to \code{\link[R.matlab]{readMat}}.
+#' @export
+mat_write <- function(matfile, ...) {
+  assert_mat(matfile)
+  tryCatch(
+    R.matlab::writeMat(con = matfile, ...),
+    error = function(ex) {
+      stop(recode_msg_write(ex$message), call. = FALSE)
+    }
+  )
+}
+
+#' Writes to a MAT file
+#'
+#'  This function is a soft-wrapper around \code{\link[R.matlab]{writeMat}}.
+#'
+#' @inheritParams mat_write
+#' @param ... further arguments passe to \code{\link[R.matlab]{writeMat}}.
 #' @importFrom R.matlab readMat.default
 #' @export
-mat_read <- function(x) {
-  R.matlab::readMat.default()
+mat_read <- function(matfile, ...) {
+  assert_mat(matfile)
+  R.matlab::readMat.default(con = matfile, ...)
 }

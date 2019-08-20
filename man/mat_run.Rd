@@ -4,9 +4,29 @@
 \alias{mat_run}
 \title{Run Matlab}
 \usage{
-mat_run(code, save_path = NULL, load_path = NULL,
+mat_run(code, load_path = NULL, save_path = NULL,
   run_arg = c("batch", "interactive"), ...)
+}
+\arguments{
+\item{code}{code to be evaluated}
+
+\item{load_path}{specify file path of which to load workspace variables}
+
+\item{save_path}{specify file path of which to save workspace variables}
+
+\item{run_arg}{in which mode to be run. Batch is advised}
+
+\item{...}{further arguments passe to \code{\link[processx]{run}}.}
 }
 \description{
 Run Matlab
+}
+\examples{
+\dontrun{
+# Print the paths of matlab
+mat_run("path")
+
+# In strings double quotes should be outside and single quotes inside
+mat_run("'hello'")
+}
 }

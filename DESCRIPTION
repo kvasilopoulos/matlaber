@@ -6,8 +6,9 @@ Authors@R:
            family = "Vasilopoulos",
            role = c("aut", "cre"),
            email = "k.vasilopoulo@gmail.com")
-Description: Provides an interface to matlab systems locally.
-    to allow 
+Description: Provides an interface to matlab systems locally. Allow to either 
+    run matlab in batch or reactive mode. Batch mode allows output to be displayed
+    in the console windos.Reads, writes and translates from R to Matlab.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

@@ -14,17 +14,25 @@ has to be install locally in order for {matlaber} to work.
 
 ``` r
 library(matlaber)
+#> Registered S3 method overwritten by 'R.oo':
+#>   method        from       
+#>   throw.default R.methodsS3
 
-run_matlab("matlabroot")
-#> ans = 'C:\ProgramFiles\MATLAB\R2018b'
+mat_run("matlabroot")
+#> 
+#> --- stdout:
+#> 
+#> ans =
+#> 
+#>     'C:\Program Files\MATLAB\R2018b'
 
-run_matlab("A = 1")
-#> A = 1
-
-# Or in an unquoted environment
-run_matlab(code_env({A = 1; B = 2}))
-#> A = 1
-#> B = 2
+mat_run("A = 1")
+#> 
+#> --- stdout:
+#> 
+#> A =
+#> 
+#>      1
 ```
 
 ## Feedback Needed

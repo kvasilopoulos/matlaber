@@ -12,7 +12,7 @@ and for matrix and data.frame.}
 
 \item{assign_name}{whether to assign the name of the R object. Default is TRUE.}
 
-\item{byrow}{whether to fill by row on by column. Onyl for atomic vectors.}
+\item{byrow}{whether to fill by row on by column. Used only for atomic vectors.}
 }
 \description{
 Translater R object into Matlab code. Can be used efficiently into a `mat_init` chain and passed into
