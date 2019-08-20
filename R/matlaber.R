@@ -2,7 +2,7 @@
 #'
 #' @importFrom processx run
 #' @export
-mat_run <- function(code, save_path = NULL, load_path = NULL,
+mat_run <- function(code, load_path = NULL, save_path = NULL,
                        run_arg = c("batch", "interactive"), ...){
   if (!is.null(save_path)) {
     code <- str_prepend(code, "save", save_path)
@@ -28,4 +28,10 @@ print.matlaber <- function(x, ...) {
   out <- trimws(x$stdout)
   cat("\n--- stdout:\n\n")
   cat(out)
+}
+
+#' @export
+mat_addpath <- function(path) {
+  path <- paste0("addpath", path, "savepath")
+  mat_run(path)
 }

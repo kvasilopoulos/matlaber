@@ -6,7 +6,7 @@ Authors@R:
            family = "Vasilopoulos",
            role = c("aut", "cre"),
            email = "k.vasilopoulo@gmail.com")
-Description: Provides an interface to matlab systems locally. Embeded is an R to Matlab translator
+Description: Provides an interface to matlab systems locally.
     to allow 
 License: GPL-3
 Encoding: UTF-8
